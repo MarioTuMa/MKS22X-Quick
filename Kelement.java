@@ -1,13 +1,17 @@
 import java.util.*;
 public class Kelement{
-  String toString( int[] data){
+  private int[] data;
+  public String toString(){
     String ans = "";
     for(int i=0;i < data.length;i++){
       ans+= Integer.toString(data[i])+", ";
     }
     return ans;
   }
-  int partition ( int [] data, int start, int end){
+  Kelement( int[] dataList){
+    data = dataList;
+  }
+  int partition ( int start, int end){
     //System.out.println(toString(data));
     int temp = data[start];
 
@@ -51,7 +55,7 @@ public class Kelement{
       data[0]=data[start - 1];
 
       data[start - 1]=temp2;
-      System.out.println(toString(data));
+      System.out.println(toString());
       return start - 1;
     }
     if(data[start]<data[0]){
@@ -59,7 +63,7 @@ public class Kelement{
       data[0]=data[start];
 
       data[start]=temp2;
-      System.out.println(toString(data));
+      System.out.println(toString());
       return start;
     }
     else{
@@ -67,16 +71,22 @@ public class Kelement{
       data[0]=data[start-1];
 
       data[start-1]=temp2;
-      System.out.println(toString(data));
+      System.out.println(toString());
       return start - 1;
     }
 
 
 
   }
+  public int getKelement(int elementNum){
+    partition(0,data.length - 1);
+    return 3;
+  }
+
   public static void main(String[] args){
-    Kelement k = new Kelement();
     int[] data = {17, 61, 67, 47, 93,12,	20,	4, 44,	68};
-    System.out.println(k.partition(data,0,9));
+    Kelement k = new Kelement(data);
+
+    System.out.println(k.partition(0,9));
   }
 }
