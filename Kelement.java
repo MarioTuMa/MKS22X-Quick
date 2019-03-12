@@ -79,14 +79,28 @@ public class Kelement{
 
   }
   public int getKelement(int elementNum){
-    partition(0,data.length - 1);
-    return 3;
+    int start = 0;
+    int end = data.length - 1;
+
+    while(true){
+      int x = partition(start,end);
+      if(elementNum == x){
+        return data[x];
+      }
+      if(elementNum > x){
+        start = x;
+      }
+      if(elementNum < x){
+        end = x;
+      }
+    }
+
   }
 
   public static void main(String[] args){
     int[] data = {17, 61, 67, 47, 93,12,	20,	4, 44,	68};
     Kelement k = new Kelement(data);
 
-    System.out.println(k.partition(0,9));
+    System.out.println(k.getKelement(3));
   }
 }
