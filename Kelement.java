@@ -13,6 +13,14 @@ public class Kelement{
   }
   int partition ( int start, int end){
     //System.out.println(toString(data));
+    // if(end -start == 1){
+    //   if (data[start] >data[end]){
+    //     int temp = data[end];
+    //     data[end]=data[start];
+    //     data[start]=data[end];
+    //   }
+    //   return start;
+    // }
     int temp = data[start];
 
     Random r = new Random();
@@ -24,7 +32,7 @@ public class Kelement{
     data[start]=data[pivotIndex];
     data[pivotIndex]=temp;
     //System.out.println(toString(data));
-    pivotIndex=0;
+    pivotIndex=start;
     start+=1;
     while(start-end<1){
       if(data[start]<pivotValue){
@@ -55,7 +63,7 @@ public class Kelement{
       data[0]=data[start - 1];
 
       data[start - 1]=temp2;
-      System.out.println(toString());
+      //System.out.println(toString());
       return start - 1;
     }
     if(data[start]<data[0]){
@@ -63,7 +71,7 @@ public class Kelement{
       data[0]=data[start];
 
       data[start]=temp2;
-      System.out.println(toString());
+      //System.out.println(toString());
       return start;
     }
     else{
@@ -71,13 +79,29 @@ public class Kelement{
       data[0]=data[start-1];
 
       data[start-1]=temp2;
-      System.out.println(toString());
+      //System.out.println(toString());
       return start - 1;
     }
 
 
 
   }
+  public boolean validate(int index, int start, int end){
+
+    for(int i = start; i < index - 1; i++){
+      if(data[i]>data[index]){
+        return false;
+      }
+    }
+    for(int i = index + 1; i <= end; i++){
+      if(data[i]<data[index]){
+        return false;
+      }
+    }
+    return true;
+
+  }
+
   public int getKelement(int elementNum){
     int start = 0;
     int end = data.length - 1;
@@ -88,19 +112,29 @@ public class Kelement{
         return data[x];
       }
       if(elementNum > x){
-        start = x;
+        start = x+1;
       }
       if(elementNum < x){
-        end = x;
+        end = x-1;
       }
+      System.out.print("Start:"+Integer.toString(start)+" , End: "+Integer.toString(end)+"\n");
     }
 
   }
 
   public static void main(String[] args){
-    int[] data = {17, 61, 67, 47, 93,12,	20,	4, 44,	68};
-    Kelement k = new Kelement(data);
+    int[] data = {17, 61, 67, 47, 93, 12,	20,	4, 44,	68, 13, 51, 53, 132, 313, 101, 612, 94};
+    for(int i = 5; i<15; i++){
+      int[] newArray = Arrays.copyOfRange(data, 0, i);
 
-    System.out.println(k.getKelement(3));
+      Kelement k = new Kelement(newArray);
+      Random r = new Random();
+      int end = Math.abs(r.nextInt())%(i-1)+1;
+      int x = k.partition(3,end);
+      if(!k.validate(x,0,end)){
+        System.out.println(x);
+        System.out.println(k.toString());
+      }
+    }
   }
 }
