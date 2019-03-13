@@ -186,8 +186,8 @@ public class Quick{
     try{
       final long startTime = System.nanoTime();
 
-      int[] data = new int[100000];
-      File text = new File("100000perm.txt");
+      int[] data = new int[1000000];
+      File text = new File("1000000perm.txt");
       // can be a path like: "/full/path/to/file.txt" or "../data/file.txt"
 
       //inf stands for the input file
