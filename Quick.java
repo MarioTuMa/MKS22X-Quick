@@ -254,7 +254,9 @@ public class Quick{
 
     while(true){
       int[] x = dutchpartition(data,start,end);
-      if(elementNum > x[0] && elementNum < x[1]){
+      System.out.println(start);
+      System.out.println(end);
+      if(elementNum > x[0] && elementNum <= x[1]){
         return data[x[0]];
       }
       if(elementNum > x[1]){
@@ -324,27 +326,12 @@ public class Quick{
     //   int[] newArray = Arrays.copyOfRange(data, 0, i);
     //
     Quick q = new Quick();
-    int[] compArray = Arrays.copyOf(data,data.length);
-    final long sTime = System.nanoTime();
-    //System.out.println(q.validate(compArray));
-    Arrays.sort(compArray);
-    //System.out.println(q.validate(compArray));
 
-    System.out.println((System.nanoTime() - sTime)/1000000000.0);
-    final long startTime = System.nanoTime();
-    q.quicksort(data);
-    System.out.println(q.toString(data));
-
-    final long duration = System.nanoTime() - startTime;
-    System.out.println(duration/1000000000.0);
-    //System.out.println(q.validate(data));
-    System.out.println(Arrays.equals(data,compArray));
-    System.out.println(q.toString(data));
-    System.out.println(q.toString(compArray));
+    System.out.print(q.quickselect(data,4));
     // int[] info =  q.dutchpartition(data,4,data.length - 1);
     //
     // System.out.println(Integer.toString(info[0])+", "+Integer.toString(info[1]));
-    // System.out.println(q.toString(data));
+    System.out.println(q.toString(data));
 
     //   }
     // }
