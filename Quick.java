@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class Quick{
 
-  public String toString(int[] data){
+  public static String toString(int[] data){
     String ans = "";
     for(int i=0;i < data.length;i++){
       ans+= Integer.toString(data[i])+", ";
@@ -10,7 +10,7 @@ public class Quick{
     return ans;
   }
 
-  int partition (int[] data, int start, int end){
+  static int partition (int[] data, int start, int end){
     //System.out.println(toString(data));
     if(end == start){
       return start;
@@ -92,7 +92,7 @@ public class Quick{
 
   }
 
-  int[] dutchpartition (int[] data, int start, int end){
+  static int[] dutchpartition (int[] data, int start, int end){
     //System.out.println(toString(data));
     if(end == start){
       int[] toReturn = new int[2];
@@ -208,7 +208,7 @@ public class Quick{
 
 
   }
-  public boolean validate(int[] data, int index, int start, int end){
+  public static boolean validate(int[] data, int index, int start, int end){
 
     for(int i = start; i < index - 1; i++){
       if(data[i]>data[index]){
@@ -223,7 +223,7 @@ public class Quick{
     return true;
 
   }
-  public void fix(int[] data){
+  public static void fix(int[] data){
 
     for(int i = 1; i < data.length; i++){
       if(data[i-1]>data[i]){
@@ -236,7 +236,7 @@ public class Quick{
 
 
   }
-  public boolean validate(int[] data){
+  public static boolean validate(int[] data){
 
     for(int i = 1; i < data.length; i++){
       if(data[i-1]>data[i]){
@@ -248,7 +248,7 @@ public class Quick{
 
   }
 
-  public int quickselect(int[] data, int elementNum){
+  public static int quickselect(int[] data, int elementNum){
     int start = 0;
     int end = data.length - 1;
 
@@ -272,7 +272,7 @@ public class Quick{
 
 
 
-  public void quicksort(int[] data){
+  public static void quicksort(int[] data){
 
     int[] x = dutchpartition(data,0,data.length - 1);
 
@@ -291,7 +291,7 @@ public class Quick{
     fix(data);
   }
 
-  public void quicksort(int[] data, int start, int end){
+  public static void quicksort(int[] data, int start, int end){
 
     if(start < end){
       int[] x = dutchpartition(data,start,end);
